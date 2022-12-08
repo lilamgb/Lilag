@@ -4,13 +4,18 @@ Lila Guzman
 Refinando código
 aqui, se refinará un código dado y se publicará en un repositorio de Github
 """
+import sys 
 
 def costos_lista():
     """Función que devuelve una lista de costos del archivo gift_costs.txt"""
     with open('gift_costs.txt', 'r', encoding='UTF-8') as archive:
         gift_costs = list(archive)
-    gift_costs = [int(c) for c in gift_costs]  # convierte strings a int
-    
+    try:
+      gift_costs = [int(c) for c in gift_costs]  # convierte strings a int
+    except ValueError:
+      print('Los datos deben ser dígitos.')
+      sys.exit()
+        
     return gift_costs
 
 
